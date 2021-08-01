@@ -11,9 +11,10 @@
   </div>
   <div class="row">
     <% @lists.each do |list| %>
-      <div class="co-12 colsm-6 col-md-4">
+      <div class="col-12 colsm-6 col-md-3 mb-3">
         <%= link_to list_path(list), class:'text-decoration-none' do %>
-          <div class="card-category" data-aos="zoom-in" >
+          <img class="avatar-xlarge img-fluid card-img-top" src="<%= list.photo.attached? ? cl_image_path(list.photo.key, height: 400, width: 400, crop: :fill) : asset_path('list_background.jpg') %>" />
+          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%# = list.photo.attached? ? cl_image_path(list.photo.key) : asset_path('list_background.jpg') %>)">
             <%= list.name %>
           </div>
         <% end %>
